@@ -24,4 +24,4 @@ This project requires that Node.js and Webpack both be installed.
 <pre lang='text'>
 <code>npm run build</code>
 </pre>
-<p>This runs <code>rm -rf build && ENV=prod webpack -p && cp ./src/{.htaccess,index.html} ./build/ && mkdir ./build/libs && cp ./src/libs/*.js ./build/libs</code>. So it will not include source maps or run a watch command. It will output the bundles and all necessary assets(html files, images, and libraries) into a build directory next to the src directory.</p>
+<p>This runs <code>rm -rf build && ENV=prod webpack -p && cp ./src/{.htaccess,index.html} ./build/ && ditto src/libs/*.js ./build/libs</code>. So it will not include source maps or run a watch command. It will output the bundle and copy all necessary assets(html files and libraries) into a build directory next to the src directory.  These commands may not work on all systems and you may need to edit the script to work on your system.  If that's the case, still run <code>ENV=prod webpack -p</code> to bundle up your javascript and save it in the build directory, but you will need to write a script to copy over the libs folder, the index.html and if desired, the .htaccess file.</p>

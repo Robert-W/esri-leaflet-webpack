@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ENV=dev webpack -p -d --watch",
-    "build": "rm -rf build && ENV=prod webpack -p && cp ./src/{.htaccess,index.html} ./build/ && mkdir ./build/libs && cp ./src/libs/*.js ./build/libs"
+    "build": "rm -rf build && ENV=prod webpack -p && cp ./src/{.htaccess,index.html} ./build/ && ditto src/libs/*.js ./build/libs"
   },
   "repository": {
     "type": "git",
