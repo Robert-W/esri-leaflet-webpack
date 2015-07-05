@@ -1,6 +1,7 @@
 # Ignore the build and dist directories
 build
 dist
+src
 
 # Ignore components installed by bower
 bower
@@ -9,7 +10,3 @@ bower
 node_modules
 npm-debug.log
 .DS_Store
-
-# Ignore any generated content to prevent conflicts when multiple people develop
-*.html
-*.css
