@@ -8,7 +8,7 @@ import React from 'react';
 if (!babelPolyfill) { alert('Error: babel-polyfill not loaded.'); }
 
 window.app = {
-  debugEnabled: false,
+  debugEnabled: true,
   debug: function (message) {
     if (this.debugEnabled) {
       var print = typeof message === 'string' ? console.log : console.dir;
@@ -19,6 +19,7 @@ window.app = {
 
 let lazyloadStylesheets = () => {
   loadCss(`http://cdn.leafletjs.com/leaflet-${config.leafletVersion}/leaflet.css`);
+  loadCss(`css/app.css?${config.appVersion}`);
 };
 
 let loadApp = () => {

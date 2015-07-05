@@ -11,5 +11,5 @@ export const loadScript = (src, callback) => {
   script.src = src;
   script.onload = callback;
   tag = document.getElementsByTagName('script')[0];
-  tag.parentNode.insertBefore(script, tag);
+  requestAnimationFrame(() => { tag.parentNode.insertBefore(script, tag); });
 };

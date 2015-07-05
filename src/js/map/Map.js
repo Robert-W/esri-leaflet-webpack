@@ -1,4 +1,5 @@
 import {MapActions as actions} from 'actions/MapActions';
+import {BasemapGallery} from 'map/BasemapGallery';
 import {map as config} from 'js/config';
 import React from 'react';
 
@@ -18,7 +19,9 @@ export class Map extends React.Component {
   render () {
     return (
       <div id={config.id} className='map'>
-
+        <div className='map-widgets-wrapper'>
+          { this.state.loaded ? <BasemapGallery /> : null }
+        </div>
       </div>
     );
   }

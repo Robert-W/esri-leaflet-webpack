@@ -4,11 +4,12 @@
   "description": "Boilerplate for an app using webpack, jade, stylus, react, flux, and es6 (via babel).",
   "scripts": {
     "start": "npm run watch",
-    "watch": "npm run jade & npm run stylus & ENV=dev webpack -p -d --watch",
+    "watch": "npm run mkdirp && npm run jade & npm run stylus & ENV=dev webpack -p -d --watch",
     "dist": "rm -rf dist && npm run stylus:dist && npm run jade:dist && ENV=prod webpack -p",
-    "stylus": "stylus src/css/base.styl -l --watch",
+    "mkdirp": "mkdir -p build/css",
+    "stylus": "stylus src/css/base.styl -l --watch & stylus src/css/app.styl -l -o build/css --watch",
     "jade": "jade src/index.jade -O src/index.json -o build --watch",
-    "stylus:dist": "stylus src/css/base.styl --compress",
+    "stylus:dist": "stylus src/css/base.styl --compress && stylus src/css/app.styl -o dist/css --compress",
     "jade:dist": "jade src/index.jade -O src/index.json -o dist"
   },
   "author": "Robert-W",

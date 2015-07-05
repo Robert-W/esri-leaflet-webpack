@@ -1,5 +1,5 @@
 import {Dispatcher as dispatcher} from 'js/dispatcher';
-// import constants from 'constants/MapConstants';
+import constants from 'constants/MapConstants';
 
 let store = {};
 let observers = [];
@@ -40,19 +40,18 @@ const emit = () => {
 };
 
 dispatcher.register(payload => {
-
-  // switch (payload.actionType) {
-  //   case constants.basemap:
-  //     set(constants.basemap, payload.data);
-  //     emit();
-  //   break;
-  //   case constants.extent:
-  //     set(constants.extent, {
-  //       x: payload.data.center.getLongitude().toFixed(2),
-  //       y: payload.data.center.getLatitude().toFixed(2),
-  //       z: payload.data.zoom
-  //     });
-  //   break;
-  // }
+  switch (payload.actionType) {
+    case constants.basemap:
+      set(constants.basemap, payload.data);
+      emit();
+    break;
+    case constants.extent:
+      set(constants.extent, {
+        x: payload.data.x.toFixed(2), // Longitude
+        y: payload.data.y.toFixed(2), // Latitude
+        z: payload.data.z
+      });
+    break;
+  }
 
 });
