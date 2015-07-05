@@ -1,39 +1,25 @@
 {
   "name": "esri-leaflet-webpack",
   "version": "1.0.0",
-  "description": "A simple starter template for building an app with webpack, esri-leaflet, and React.js.",
-  "main": "index.js",
+  "description": "",
   "scripts": {
-    "start": "ENV=dev webpack -p -d --watch",
-    "build": "rm -rf build && ENV=prod webpack -p && cp ./src/{.htaccess,index.html} ./build/ && ditto src/libs/*.js ./build/libs"
+    "start": "npm run watch",
+    "watch": "npm run jade & npm run stylus & ENV=dev webpack -p -d --watch",
+    "dist": "rm -rf dist && npm run stylus:dist && npm run jade:dist && ENV=prod webpack -p",
+    "stylus": "stylus src/css/base.styl -l --watch",
+    "jade": "jade src/index.jade -O src/index.json -o build --watch",
+    "stylus:dist": "stylus src/css/base.styl --compress",
+    "jade:dist": "jade src/index.jade -O src/index.json -o dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Robert-W/esri-leaflet-webpack.git"
-  },
-  "keywords": [
-    "esri",
-    "leaflet",
-    "map",
-    "javascript",
-    "webpack",
-    "react",
-    "jsx"
-  ],
-  "author": "Robert Winterbottom",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Robert-W/esri-leaflet-webpack/issues"
-  },
-  "homepage": "https://github.com/Robert-W/esri-leaflet-webpack",
   "dependencies": {
-    "css-loader": "^0.9.0",
-    "file-loader": "^0.8.1",
-    "jsx-loader": "^0.12.2",
-    "nib": "^1.0.4",
-    "style-loader": "^0.8.2",
-    "stylus": "^0.49.3",
-    "stylus-loader": "^0.5.0",
-    "url-loader": "^0.5.5"
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.3.1",
+    "jade": "^1.11.0",
+    "node-libs-browser": "^0.5.2",
+    "stylus": "^0.51.1",
+    "webpack": "^1.10.1"
   }
 }

@@ -1,31 +1,39 @@
-/** @jsx React.DOM */
-(function (win, doc) {
+import babelPolyfill from 'babel-polyfill';
+import {main as config} from 'js/config';
+import {loadScript} from 'utils/loaders';
+import {loadCss} from 'utils/loaders';
+import {Map} from 'map/Map';
+import React from 'react';
 
-	require('styl/app.styl');
+if (!babelPolyfill) { alert('Error: babel-polyfill not loaded.'); }
 
-	var launch = function () {
-		var React = require('react');
-		var App = require('components/App');
-		/* jshint ignore:start */
-		React.render(<App />, document.getElementById("react-root"));		
-		/* jshint ignore:end */
-	};
-
-	win.requestAnimationFrame = (function () {
-  	return win.requestAnimationFrame ||
-      win.webkitRequestAnimationFrame ||
-      win.mozRequestAnimationFrame ||
-      win.oRequestAnimationFrame ||
-  		win.msRequestAnimationFrame;
-  })();
-
-  if (win.requestAnimationFrame) {
-    win.requestAnimationFrame(launch);
-  } else if (doc.readyState === "loaded") {
-    launch();
-  } else {
-    win.onload = launch;
+window.app = {
+  debugEnabled: false,
+  debug: function (message) {
+    if (this.debugEnabled) {
+      var print = typeof message === 'string' ? console.log : console.dir;
+      print.apply(console, [message]);
+    }
   }
+};
 
+let lazyloadStylesheets = () => {
+  loadCss(`http://cdn.leafletjs.com/leaflet-${config.leafletVersion}/leaflet.css`);
+};
 
-})(window, document);
+let loadApp = () => {
+  app.debug('main >>> loadApp');
+  lazyloadStylesheets();
+  // Load Leaflet
+  loadScript(`http://cdn.jsdelivr.net/leaflet/${config.leafletVersion}/leaflet.js`, () => {
+    loadScript(`http://cdn.jsdelivr.net/leaflet.esri/${config.esriLeafletVersion}/esri-leaflet.js`, () => {
+      React.render(<Map />, document.getElementById('map-container'));
+    });
+  });
+};
+
+if (document.readyState === 'loaded') {
+  loadApp();
+} else {
+  window.onload = loadApp;
+}

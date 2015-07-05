@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title #{title}
+    //- Meta Tags
+    include templates/meta.jade
+    //- Inline Critical CSS only
+    style.
+      html,body{height:100%;width:100%;padding:0;margin:0;overflow:hidden}
+    style
+      include css/base.css
+    body
+      include templates/svg.jade
+      include templates/app.jade
+      script(src="js/main.js?#{appVersion}", async)
