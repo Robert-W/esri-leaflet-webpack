@@ -26,11 +26,11 @@ export const config = {
 
   uiComponents: {
     basemaps: [
-      { label: 'Topographic', value: 'Topographic', icon: 'terrain_labels.jpg' },
+      { label: 'Topographic', value: 'Topographic', icon: 'topographic.jpg' },
       { label: 'Dark Gray Canvas', value: 'DarkGray', icon: 'DGCanvasBase.png' },
-      { label: 'Imagery', value: 'Imagery', icon: 'imagery_labels.jpg' },
+      { label: 'Imagery', value: 'Imagery', icon: 'imagery.jpg' },
       { label: 'National Geographic', value: 'NationalGeographic', icon: 'natgeo.jpg' },
-      { label: 'Shaded Relief', value: 'ShadedRelief', icon: 'temposm.jpg' }
+      { label: 'Streets', value: 'Streets', icon: 'world_street_map.jpg' }
     ]
   }
 

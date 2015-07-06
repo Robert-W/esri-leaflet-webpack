@@ -6,9 +6,7 @@ export default {
     let baseLayer;
 
     app.map.eachLayer((layer) => {
-      if (layer.options.id === 'basemap') {
-        baseLayer = layer;
-      }
+      if (layer.options.id === 'basemap') { baseLayer = layer; }
     });
 
     if (baseLayer) {
