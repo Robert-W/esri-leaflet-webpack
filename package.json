@@ -4,7 +4,7 @@
   "description": "Boilerplate for an app using webpack, jade, stylus, react, flux, and es6 (via babel).",
   "scripts": {
     "start": "npm run watch",
-    "watch": "gulp build && npm run mkdirp && npm run jade & npm run stylus & ENV=dev webpack -p -d --watch",
+    "watch": "npm run mkdirp && gulp build && npm run jade & npm run stylus & ENV=dev webpack -p -d --watch",
     "dist": "rm -rf dist && gulp dist && npm run stylus:dist && npm run jade:dist && ENV=prod webpack -p",
     "mkdirp": "mkdir -p build/css",
     "stylus": "stylus src/css/base.styl -l --watch & stylus src/css/app.styl -l -o build/css --watch",

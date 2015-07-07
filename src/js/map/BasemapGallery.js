@@ -22,9 +22,22 @@ export class BasemapGallery extends React.Component {
 
   componentDidMount () {
     MapStore.registerCallback(this.onStoreChange.bind(this));
-    // If their is a basemap present in the hash, use that basemap
-    // let basemap = getBasemapFromUrl();
-    // if (basemap) { actions.setBasemap(basemap); }
+    // Add Touch Listeners for Leaflet
+    if (L.Browser.touch) {
+      let list = this.refs.list.getDOMNode();
+      list.addEventListener('touchstart', this.disableDragging);
+      list.addEventListener('touchend', this.enableDragging);
+    }
+  }
+
+  enableDragging () {
+    app.map.tap.enable();
+    app.map.dragging.enable();
+  }
+
+  disableDragging() {
+    app.map.tap.disable();
+    app.map.dragging.disable();
   }
 
   render () {
@@ -37,7 +50,7 @@ export class BasemapGallery extends React.Component {
             <path className='basemap-icon-themed' d="M48,16.943L78.111,32L48,47.057L17.889,32L48,16.943 M48,8L0,32l48,24l48-24L48,8L48,8z"/>
           </svg>
         </div>
-        <ul className='basemap-gallery-item-list'>
+        <ul ref='list' className='basemap-gallery-item-list'>
           {this.renderBasemapItems(basemaps)}
         </ul>
       </div>

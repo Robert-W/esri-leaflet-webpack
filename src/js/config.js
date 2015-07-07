@@ -10,6 +10,8 @@ export const config = {
     id: 'map',
     options: {
       zoom: 4,
+      tap: true,
+      dragging: true,
       center: [41, -98], // LatLng, [y, x]
       zoomControl: false,
       scrollWheelZoom: false
