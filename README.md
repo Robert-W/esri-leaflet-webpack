@@ -15,7 +15,7 @@ Boilerplate for an app using webpack, jade, stylus, react, flux, and es6 (via ba
 ### npm scripts
 
 #### <code>npm start</code>
-<p>Use this for development. It will put the built code in build, obviously.</p>
+<p>Use this for development. It will put the built code in build.</p>
 
 #### <code>npm run dist</code>
 <p>Generates a deployment build in /dist.</p>

@@ -1,8 +1,0 @@
-{
-	"esnext": true,
-	"noarg": true,
-	"undef": true,
-	"unused": "vars",
-	"strict": false,
-	"predef": ["app", "L", "alert", "window", "console", "document", "requestAnimationFrame", "location", "require"]
-}
